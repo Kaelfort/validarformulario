@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
@@ -23,7 +24,23 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         inicializarVistas();
         btnRegistrar.setOnClickListener(view -> {obtenerinformacion(); validar();});
+        swEstudiante.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                mostrarelmensaje(b);
 
+
+            }
+        });
+
+    }
+
+    private void mostrarelmensaje(boolean b) {
+        String mensaje="noestoy marcado";
+        if(b){
+            mensaje="estoymarcado";
+        }
+        Toast.makeText(this,mensaje,Toast.LENGTH_LONG).show();
     }
 
     private void validar() {
