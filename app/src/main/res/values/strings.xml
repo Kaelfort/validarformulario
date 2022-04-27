@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">25deabril</string>
+    <string name="nombre">nombre:</string>
+    <string name="apellido">apellido:</string>
+    <string name="Email">Email:</string>
+    <string name="Celular">Celular:</string>
+    <string name="Nota">Nota:</string>
+    <string name="text_switch">estudiante?</string>
+    <string name="tect_button">Registrar</string>
+</resources>
