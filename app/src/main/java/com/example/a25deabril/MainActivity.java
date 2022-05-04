@@ -2,14 +2,19 @@ package com.example.a25deabril;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+    //Atributos que representen a sus views o vistas
+
+
     private EditText etNombre, etApellido,etEmail,etCelular,etcodest;
     private Button btnRegistrar;
     private Switch swEstudiante;
@@ -23,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         inicializarVistas();
-        btnRegistrar.setOnClickListener(view -> {obtenerinformacion(); validar();});
+        btnRegistrar.setOnClickListener(view -> {obtenerinformacion(); /*validar();*/pasarsegundaPantalla();});
         swEstudiante.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
@@ -33,8 +38,32 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-    }
 
+    }
+    private void pasarsegundaPantalla(){
+            /*para pasa a 2da pantalla deben crear una clase intent,
+            como parametros al contructor de esa clase va pasar  2 valores:
+            1parametro de donde a donde van a ir
+            2parametro a donde o a que pantalla va  a ir
+            estos parametros deben representar el contexto o ambito de las clases que representas a esas pantallas
+            en realidad el metodo de la pantalla se llama starActivity pero este necesita que el intent
+            haya resuelto el paso de pantallas caso contrario fallará
+
+             */
+        Intent intencion = new Intent(this, HomeActivity.class); //o MainActivity.this
+        /*las intenciones a enviar son datos primitivos que son string, int ,float, bool, char, etc*/
+        /*
+        1 el intent tien un archivo tempoal, pueden entender que el archivo
+        2 el archivo contiene  registos del formato CLAVE(key) --> Valor
+        3 elcada registro debe tener un dato especifico
+        4 el dato solo puede ser de tipo primitivo
+        5 cada registro se entiende como EXTRA
+         */
+        //generar registro Clave -->valor
+        intencion.putExtra("nombre_persona", nombre);
+        intencion.putExtra("apellido_persona", apellido);
+        startActivity(intencion);
+    }
     private void mostrarelmensaje(boolean b) {
         String mensaje="noestoy marcado";
         if(b){
