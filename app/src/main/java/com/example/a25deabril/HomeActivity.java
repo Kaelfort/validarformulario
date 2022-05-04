@@ -18,7 +18,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void mostrardatos() {
-        txtResultado.setText(nombre+ " "+apellido);
+        txtResultado.setText(nombre+ "  "+apellido);
     }
 
     private void obtenerdatosprimerapantalla() {
